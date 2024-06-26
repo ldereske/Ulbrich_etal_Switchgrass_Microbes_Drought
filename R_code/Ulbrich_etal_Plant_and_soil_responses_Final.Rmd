@@ -9,6 +9,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(here)
 library(MASS)
 library(reshape2)
 library(reshape)
@@ -22,6 +23,7 @@ library(lme4)
 library(ggpubr)
 library(knitr)
 library(lmerTest)
+library(DHARMa)
 options(contrasts=c("contr.sum", "contr.poly"))
 "%w/o%" <- function(x,y)!('%in%'(x,y))
 
@@ -31,19 +33,19 @@ Import dataset into R from your directory
 Here is my directory
 ```{r, include=FALSE}
 
-dataSG_seed_surv <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_surv_Seed_germ.csv")
-dataSG_trans_surv <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_surv_transplant_replace.csv")
-data_SG_biomass <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_TotalBiomass.csv")
-SG_trt <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_trt_sheet.csv")
-SG_height_combin<- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_height_time_combine.csv", header = T)
-SG_planting_data<- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_planting_data.csv", header = T)
+dataSG_seed_surv <- read.csv(here::here("R_data","SG_surv_Seed_germ.csv"))
+dataSG_trans_surv <- read.csv(here::here("R_data","SG_surv_transplant_replace.csv"))
+data_SG_biomass <- read.csv(here::here("R_data","SG_TotalBiomass.csv"))
+SG_trt <- read.csv(here::here("R_data","SG_trt_sheet.csv"))
+SG_height_combin<- read.csv(here::here("R_data","SG_height_time_combine.csv"), header = T)
+SG_planting_data<- read.csv(here::here("R_data","SG_planting_data.csv"), header = T)
 
-SG_roottraits<- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_roottraits.csv", header = T)
+SG_roottraits<- read.csv(here::here("R_data","SG_roottraits.csv"), header = T)
 summary(SG_roottraits)
 
-SG_inorg_N<- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_NO3NH4_ug_gdrysoil.csv", header = T)
+SG_inorg_N<- read.csv(here::here("R_data","SG_NO3NH4_ug_gdrysoil.csv"), header = T)
 summary(SG_inorg_N)
-SG_start_inorg_N<-read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_start_NO3NH4_ug_gdrysoil.csv", header = T)
+SG_start_inorg_N<-read.csv(here::here("R_data","SG_start_NO3NH4_ug_gdrysoil.csv"), header = T)
 
 #now we need to merge the data file with the trt file
 
@@ -95,6 +97,7 @@ day_t0_germ_model= lmer((t0_germ)^-1~precip*soil_root+(1|block), data= dataSG_se
 qqPlot(resid(day_t0_germ_model))
 hist(resid(day_t0_germ_model))
 shapiro.test(resid(day_t0_germ_model))
+simulateResiduals(fittedModel = day_t0_germ_model, plot = T)
 ```
 Raw Statistical output
 ```{r}
@@ -140,7 +143,7 @@ day_t0_germ_model_pres= lmer((t0_germ)^-1~precip*soil_root+(1|block), data= data
 qqPlot(resid(day_t0_germ_model_pres))
 hist(resid(day_t0_germ_model_pres))
 shapiro.test(resid(day_t0_germ_model_pres))
-
+simulateResiduals(fittedModel = day_t0_germ_model_pres, plot = T)
 ```
 
 Raw Statistical output
@@ -172,7 +175,7 @@ qqPlot(resid(day_t0_germ_model_orig))
 hist(resid(day_t0_germ_model_orig))
 shapiro.test(resid(day_t0_germ_model_orig))
 #0.01286
-
+simulateResiduals(fittedModel = day_t0_germ_model_orig, plot = T)
 ```
 Raw Statistical output
 ```{r}
@@ -282,7 +285,7 @@ overdisp_fun <- function(model) {
 
 overdisp_fun(seed_germ_model)
 
-
+simulateResiduals(fittedModel = seed_germ_model, plot = T)
 ```
 Raw Statistical output
 ```{r}
@@ -310,6 +313,7 @@ hist(resid(seed_germ_model_pres))
 shapiro.test(resid(seed_germ_model_pres))
 #p-value = 0.0007916
 plot(seed_germ_model_pres)
+simulateResiduals(fittedModel = seed_germ_model_pres, plot = T)
 ```
 Raw Statistical output
 ```{r}
@@ -336,6 +340,7 @@ hist(resid(seed_germ_model_org))
 shapiro.test(resid(seed_germ_model_org))
 #p-value = 0.02477
 plot(seed_germ_model_org)
+simulateResiduals(fittedModel = seed_germ_model_org, plot = T)
 ```
 Raw Statistical output
 ```{r}
