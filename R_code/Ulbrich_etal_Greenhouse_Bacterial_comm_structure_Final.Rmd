@@ -210,9 +210,6 @@ unique(SILVA_MERDS_rar_WU_dis_start_wi_bl_trans_exp$s1_precip)
 #### Presence Distance from start community seedling
 Diagnostic Graphs
 ```{r}
-#We need to detach phyloseq due to a conflict with lmer 
-#detach("package:phyloseq", unload = T)
-
 SILVA_MERDS_rar_WU_dis_wi_bl_trans_pres=subset(SILVA_MERDS_rar_WU_dis_start_wi_bl_trans_exp,time!="Start"&s1_soil_root!="L.R")
 
 nrow(SILVA_MERDS_rar_WU_dis_wi_bl_trans_pres)
@@ -443,9 +440,9 @@ SILVA_MERDS_rar_NS_WU_ord=ordinate(SILVA_MERDS_rar_NS, method = "NMDS", distance
 plot_ordination(SILVA_MERDS_rar_NS,SILVA_MERDS_rar_NS_WU_ord, color="root_association",shape="life_stage")+geom_point(size=3)+
   theme_bw()
 #Treatment factors 
-#write.csv(data.frame(sample_data(SILVA_MERDS_rar_NS))[c("precip","block","soil_root","root_association","soil_status","life_stage")],"D:/MERDS_2018/merds/Switchgrass/R_data/SILVA_MERDS_rar_NS_map.csv")
+#write.csv(data.frame(sample_data(SILVA_MERDS_rar_NS))[c("precip","block","soil_root","root_association","soil_status","life_stage")],here::here("R_data","SILVA_MERDS_rar_NS_map.csv"))
 #distance file 
-#write.csv(as.matrix(distance(SILVA_MERDS_rar_NS,method = "wunifrac")),"D:/MERDS_2018/merds/Switchgrass/R_data/Weight_Uni_SILVA_MERDS_rar_NS_dist.csv")
+#write.csv(as.matrix(distance(SILVA_MERDS_rar_NS,method = "wunifrac")),here::here("R_data","Weight_Uni_SILVA_MERDS_rar_NS_dist.csv"))
 ```
 
 ### Community Analyses Transplants
@@ -546,9 +543,9 @@ SILVA_MERDS_rar_trt_trans_WU_ord=ordinate(SILVA_MERDS_rar_trt_trans, method = "N
 plot_ordination(SILVA_MERDS_rar_trt_trans,SILVA_MERDS_rar_trt_trans_WU_ord, color="precip",shape="soil_root")+geom_point(size=4)+
   geom_label_repel(size=3,aes(label = block))+theme_bw()
 #Treatment factors 
-#write.csv(data.frame(sample_data(SILVA_MERDS_rar_trt_trans))[c("precip","block","soil_root","root_association","soil_status")],"D:/MERDS_2018/merds/Switchgrass/R_data/trans_SILVA_MERDS_rar_live_NS_map.csv")
+#write.csv(data.frame(sample_data(SILVA_MERDS_rar_trt_trans))[c("precip","block","soil_root","root_association","soil_status")],here::here("R_data","trans_SILVA_MERDS_rar_live_NS_map.csv"))
 #distance file 
-#write.csv(as.matrix(distance(SILVA_MERDS_rar_trt_trans,method = "wunifrac")),"D:/MERDS_2018/merds/Switchgrass/R_data/trans_Weight_Uni_SILVA_MERDS_rar_live_NS_dist.csv")
+#write.csv(as.matrix(distance(SILVA_MERDS_rar_trt_trans,method = "wunifrac")),here::here("R_data","trans_Weight_Uni_SILVA_MERDS_rar_live_NS_dist.csv"))
 ```
 
 ### Community Analyses Germination
@@ -623,7 +620,7 @@ live_NS_seed.ind = multipatt(as.data.frame(SILVA_MERDS_rar_live_NS_seed_OTU),
                              control = how(nperm=9999), func="IndVal.g")
 
 
-#save(live_NS_seed.ind,file = "D:/MERDS_2018/merds/Switchgrass/R_data/Indicator_spp_live_no_start_seed_comm_association.Rdata")
+#save(live_NS_seed.ind,file = here::here("R_data","Indicator_spp_live_no_start_seed_comm_association.Rdata"))
 
 summary(live_NS_seed.ind, indvalcomp=TRUE)
 
@@ -672,9 +669,9 @@ SILVA_MERDS_rar_trt_seed_WU_ord=ordinate(SILVA_MERDS_rar_trt_seed, method = "NMD
 plot_ordination(SILVA_MERDS_rar_trt_seed,SILVA_MERDS_rar_trt_seed_WU_ord, color="precip",shape="soil_root")+geom_point(size=4)+
   geom_label_repel(size=3,aes(label = block))+theme_bw()
 #Treatment factors 
-#write.csv(data.frame(sample_data(SILVA_MERDS_rar_trt_seed))[c("precip","block","soil_root","root_association","soil_status")],"D:/MERDS_2018/merds/Switchgrass/R_data/seed_SILVA_MERDS_rar_live_NS_map.csv")
+#write.csv(data.frame(sample_data(SILVA_MERDS_rar_trt_seed))[c("precip","block","soil_root","root_association","soil_status")],here::here("R_data","seed_SILVA_MERDS_rar_live_NS_map.csv"))
 #distance file 
-#write.csv(as.matrix(distance(SILVA_MERDS_rar_trt_seed,method = "wunifrac")),"D:/MERDS_2018/merds/Switchgrass/R_data/seed_Weight_Uni_SILVA_MERDS_rar_live_NS_dist.csv")
+#write.csv(as.matrix(distance(SILVA_MERDS_rar_trt_seed,method = "wunifrac")),here::here("R_data","seed_Weight_Uni_SILVA_MERDS_rar_live_NS_dist.csv"))
 ```
 
 ### Transplant Stack bar graphs
@@ -1267,7 +1264,7 @@ kable(df_anova_bact_obs_rich_model_seed,align = "c",digits = c(1,2,2,3), caption
 ```{r echo=FALSE}
 SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g=SILVA_MERDS_rar.divfil_trt_seed %>% group_by(soil_root,precip)
 obs_rich_precip_seed=summarise_at(SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g, 
-                                  "Observed", funs(n(),mean,sd,se=sd(.)/sqrt(n())))
+                                  "Observed", list(~n(),~mean(.),~sd(.),se=~sd(.)/sqrt(n())))
 (seed_obs_richness_p=ggplot(obs_rich_precip_seed, aes(x=precip,fill=factor(soil_root,levels = treatment_order)))+
     geom_bar(aes(y=mean),position="dodge",stat="identity", color="black")+
     geom_errorbar(aes(y=mean, ymin = mean-se, ymax= mean+se),position=position_dodge(width=0.9), width=0.2, size=1)+ylim(c(0,2450))+
@@ -1397,7 +1394,7 @@ kable(df_anova_bact_inv_simp_model_seed,align = "c",digits = c(1,2,2,3), caption
 ```{r echo=FALSE}
 SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g=SILVA_MERDS_rar.divfil_trt_seed %>% group_by(soil_root,precip)
 inv_simp_precip_seed=summarise_at(SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g, 
-                                  "InvSimpson", funs(n(),mean,sd,se=sd(.)/sqrt(n())))
+                                  "InvSimpson", list(~n(),~mean(.),~sd(.),se=~sd(.)/sqrt(n())))
 
 (seed_inv_simpson_p=ggplot(inv_simp_precip_seed, aes(x=precip,fill=factor(soil_root,levels = treatment_order)))+
     geom_bar(aes(y=mean),position="dodge",stat="identity", color="black")+
@@ -1470,7 +1467,7 @@ inv_simp_precip_trans=summarise_at(SILVA_MERDS_rar.divfil_trt_trans_precip_soil_
 
 
 obs_rich_precip_seed=summarise_at(SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g, 
-                                  "Observed", funs(n(),mean,sd,se=sd(.)/sqrt(n())))
+                                  "Observed", list(~n(),~mean(.),~sd(.),se=~sd(.)/sqrt(n())))
 (seed_obs_richness_p2=ggplot(obs_rich_precip_seed, aes(x=precip,fill=factor(soil_root,levels = treatment_order)))+
     geom_bar(aes(y=mean),position="dodge",stat="identity", color="black")+
     geom_errorbar(aes(y=mean, ymin = mean-se, ymax= mean+se),position=position_dodge(width=0.9), width=0.2, size=1)+ylim(c(0,2450))+
@@ -1481,7 +1478,7 @@ obs_rich_precip_seed=summarise_at(SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g,
           legend.position = "none",panel.grid.major = element_blank(), panel.grid.minor = element_blank()))
 
 inv_simp_precip_seed=summarise_at(SILVA_MERDS_rar.divfil_trt_seed_precip_soil_g, 
-                                  "InvSimpson", funs(n(),mean,sd,se=sd(.)/sqrt(n())))
+                                  "InvSimpson", list(~n(),~mean(.),~sd(.),se=~sd(.)/sqrt(n())))
 
 (seed_inv_simpson_p2=ggplot(inv_simp_precip_seed, aes(x=precip,fill=factor(soil_root,levels = treatment_order)))+
     geom_bar(aes(y=mean),position="dodge",stat="identity", color="black")+

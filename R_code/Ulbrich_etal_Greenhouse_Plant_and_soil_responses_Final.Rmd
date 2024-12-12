@@ -1329,7 +1329,7 @@ Graph for publication
 ```{r echo=FALSE}
 data_SG_biomass_trans_surv_trt_soil_root_precip_out_g=data_SG_biomass_trans_surv_trt %>% group_by(soil_root,precip)
 trans_survial_soil_root_precip=summarise_at(data_SG_biomass_trans_surv_trt_soil_root_precip_out_g, 
-                                                      "surv", funs(n(),mean))
+                                                      "surv", list(~n(),~mean(.)))
 trans_survial_soil_root_precip$mean_per=trans_survial_soil_root_precip$mean*100
 (trans_surv_per_p=ggplot(trans_survial_soil_root_precip, aes(x=precip,y=mean_per,fill=factor(soil_root,levels = treatment_order)))+
     geom_bar(position="dodge",stat="identity", color="black",aes(fill=factor(soil_root,levels = treatment_order)))+
@@ -2178,9 +2178,9 @@ kable(df_Anova_SG_Soil_amm_start_orig,align = "c",digits = c(2,2,3), caption= "S
 ## Total organic carbon
 
 ```{r include=FALSE}
-SG_trt <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_trt_sheet.csv")
+
 head(SG_trt)
-SG_MBC_DOC <- read.csv("D:/MERDS_2018/merds/Switchgrass/R_data/SG_analyzed_MBC_DOC.csv")
+SG_MBC_DOC <- read.csv(here::here("R_data","SG_analyzed_MBC_DOC.csv"))
 head(SG_MBC_DOC)
 
 

@@ -25,7 +25,8 @@ library(ggplot2)
 library(here)
 library(cowplot)
 #https://digital.csic.es/handle/10261/288226
-Global_SPEI_nc_tidy <- tidync(here::here("R_data","spei01.nc"))
+#Below must be downloaded
+Global_SPEI_nc_tidy <- tidync(here::here("R_data","spei01.nc"))# 1 Month SPEI downloaded from doi:10.5281/zenodo.834462
 print(Global_SPEI_nc_tidy)
 ```
 
