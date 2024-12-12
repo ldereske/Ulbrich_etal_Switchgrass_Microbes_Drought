@@ -295,7 +295,7 @@ emmeans(WU_pair_trans_mod, pairwise~s1_soil_root|s1_precip)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_WU_pair_trans_mod=anova(WU_pair_trans_mod)
-df_anova_WU_pair_trans_mod=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_WU_pair_trans_mod$NumDF,"Resid Df"=anova_WU_pair_trans_mod$DenDF,"F-value"=anova_WU_pair_trans_mod$`F value`,"P-value"=anova_WU_pair_trans_mod$`Pr(>F)`)
+df_anova_WU_pair_trans_mod=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_WU_pair_trans_mod$NumDF,"Resid Df"=anova_WU_pair_trans_mod$DenDF,"F-value"=anova_WU_pair_trans_mod$`F value`,"P-value"=anova_WU_pair_trans_mod$`Pr(>F)`)
 kable(df_anova_WU_pair_trans_mod,align = "c",digits = c(1,2,2,3), caption= "Trans Distance to initial soil communtiy")
 ```
 
@@ -405,7 +405,7 @@ emmeans(WU_pair_seed_mod,pairwise~s1_soil_root|s1_precip)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_WU_pair_seed_mod=anova(WU_pair_seed_mod)
-df_anova_WU_pair_seed_mod=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_WU_pair_seed_mod$NumDF,"Resid Df"=anova_WU_pair_seed_mod$DenDF,"F-value"=anova_WU_pair_seed_mod$`F value`,"P-value"=anova_WU_pair_seed_mod$`Pr(>F)`)
+df_anova_WU_pair_seed_mod=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_WU_pair_seed_mod$NumDF,"Resid Df"=anova_WU_pair_seed_mod$DenDF,"F-value"=anova_WU_pair_seed_mod$`F value`,"P-value"=anova_WU_pair_seed_mod$`Pr(>F)`)
 kable(df_anova_WU_pair_seed_mod,align = "c",digits = c(1,2,2,3), caption= "Seed Distance to initial soil communtiy")
 ```
 
@@ -1112,7 +1112,7 @@ anova(bact_obs_rich_model_trans_orig)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_obs_rich_model_trans_orig=anova(bact_obs_rich_model_trans_orig)
-df_anova_bact_obs_rich_model_trans_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_bact_obs_rich_model_trans_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_trans_orig$DenDF,"F-value"=anova_bact_obs_rich_model_trans_orig$`F value`,"P-value"=anova_bact_obs_rich_model_trans_orig$`Pr(>F)`)
+df_anova_bact_obs_rich_model_trans_orig=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_bact_obs_rich_model_trans_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_trans_orig$DenDF,"F-value"=anova_bact_obs_rich_model_trans_orig$`F value`,"P-value"=anova_bact_obs_rich_model_trans_orig$`Pr(>F)`)
 kable(df_anova_bact_obs_rich_model_trans_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Transplant soil communtiy richness")
 ```
 
@@ -1220,7 +1220,7 @@ anova(bact_inv_simp_model_trans_orig)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_inv_simp_model_trans_orig=anova(bact_inv_simp_model_trans_orig)
-df_anova_bact_inv_simp_model_trans_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_bact_inv_simp_model_trans_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_trans_orig$DenDF,"F-value"=anova_bact_inv_simp_model_trans_orig$`F value`,"P-value"=anova_bact_inv_simp_model_trans_orig$`Pr(>F)`)
+df_anova_bact_inv_simp_model_trans_orig=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_bact_inv_simp_model_trans_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_trans_orig$DenDF,"F-value"=anova_bact_inv_simp_model_trans_orig$`F value`,"P-value"=anova_bact_inv_simp_model_trans_orig$`Pr(>F)`)
 kable(df_anova_bact_inv_simp_model_trans_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Transplant soil communtiy inv Simpson")
 ```
 
@@ -1351,7 +1351,7 @@ emmeans(bact_obs_rich_model_seed_orig, pairwise~soil_root|precip)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_obs_rich_model_seed_orig=anova(bact_obs_rich_model_seed_orig)
-df_anova_bact_obs_rich_model_seed_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_bact_obs_rich_model_seed_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_seed_orig$DenDF,"F-value"=anova_bact_obs_rich_model_seed_orig$`F value`,"P-value"=anova_bact_obs_rich_model_seed_orig$`Pr(>F)`)
+df_anova_bact_obs_rich_model_seed_orig=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_bact_obs_rich_model_seed_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_seed_orig$DenDF,"F-value"=anova_bact_obs_rich_model_seed_orig$`F value`,"P-value"=anova_bact_obs_rich_model_seed_orig$`Pr(>F)`)
 kable(df_anova_bact_obs_rich_model_seed_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Seed soil communtiy richness")
 ```
 
@@ -1549,7 +1549,7 @@ emmeans(bact_inv_simp_model_seed_orig, pairwise~soil_root|precip)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_inv_simp_model_seed_orig=anova(bact_inv_simp_model_seed_orig)
-df_anova_bact_inv_simp_model_seed_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Precip.*Mic.Inoc."),"Df"=anova_bact_inv_simp_model_seed_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_seed_orig$DenDF,"F-value"=anova_bact_inv_simp_model_seed_orig$`F value`,"P-value"=anova_bact_inv_simp_model_seed_orig$`Pr(>F)`)
+df_anova_bact_inv_simp_model_seed_orig=data.frame(row.names =c("Precipitation","Microbial Source","Precip.*Mic.Source"),"Df"=anova_bact_inv_simp_model_seed_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_seed_orig$DenDF,"F-value"=anova_bact_inv_simp_model_seed_orig$`F value`,"P-value"=anova_bact_inv_simp_model_seed_orig$`Pr(>F)`)
 kable(df_anova_bact_inv_simp_model_seed_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Seed soil communtiy inv Simpson")
 ```
 
@@ -1638,7 +1638,7 @@ emmeans(bact_obs_rich_model_comb_orig, pairwise~life_stage|soil_root)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_obs_rich_model_comb_orig=anova(bact_obs_rich_model_comb_orig)
-df_anova_bact_obs_rich_model_comb_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Life-stage","Precip.*Mic.Inoc.","Precip.*Life-stage","Mic.Inoc.*Life-stage","Precip.*Mic.Inoc.*Life-stage"),"Df"=anova_bact_obs_rich_model_comb_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_comb_orig$DenDF,"F-value"=anova_bact_obs_rich_model_comb_orig$`F value`,"P-value"=anova_bact_obs_rich_model_comb_orig$`Pr(>F)`)
+df_anova_bact_obs_rich_model_comb_orig=data.frame(row.names =c("Precipitation","Microbial Source","Life-stage","Precip.*Mic.Source","Precip.*Life-stage","Mic.Source*Life-stage","Precip.*Mic.Source*Life-stage"),"Df"=anova_bact_obs_rich_model_comb_orig$NumDF,"Resid Df"=anova_bact_obs_rich_model_comb_orig$DenDF,"F-value"=anova_bact_obs_rich_model_comb_orig$`F value`,"P-value"=anova_bact_obs_rich_model_comb_orig$`Pr(>F)`)
 kable(df_anova_bact_obs_rich_model_comb_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Combined soil communtiy richness")
 ```
 
@@ -1724,6 +1724,6 @@ emmeans(bact_inv_simp_model_comb_orig, pairwise~soil_root|precip)
 Formatted Anova table
 ```{r echo=FALSE, results='asis'}
 anova_bact_inv_simp_model_comb_orig=anova(bact_inv_simp_model_comb_orig)
-df_anova_bact_inv_simp_model_comb_orig=data.frame(row.names =c("Precipitation","Microbial Inocula","Life-stage","Precip.*Mic.Inoc.","Precip.*Life-stage","Mic.Inoc.*Life-stage","Precip.*Mic.Inoc.*Life-stage"),"Df"=anova_bact_inv_simp_model_comb_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_comb_orig$DenDF,"F-value"=anova_bact_inv_simp_model_comb_orig$`F value`,"P-value"=anova_bact_inv_simp_model_comb_orig$`Pr(>F)`)
+df_anova_bact_inv_simp_model_comb_orig=data.frame(row.names =c("Precipitation","Microbial Source","Life-stage","Precip.*Mic.Source","Precip.*Life-stage","Mic.Source*Life-stage","Precip.*Mic.Source*Life-stage"),"Df"=anova_bact_inv_simp_model_comb_orig$NumDF,"Resid Df"=anova_bact_inv_simp_model_comb_orig$DenDF,"F-value"=anova_bact_inv_simp_model_comb_orig$`F value`,"P-value"=anova_bact_inv_simp_model_comb_orig$`Pr(>F)`)
 kable(df_anova_bact_inv_simp_model_comb_orig,align = "c",digits = c(1,2,2,3), caption= "Presence Combined soil communtiy inv Simpson")
 ```
