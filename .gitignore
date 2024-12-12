@@ -48,5 +48,8 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# Temporary exclusion of data files
-R_data/*
+#Excluded data files because they are public available or not used in the analyses 
+R_data/spei01.nc
+R_data/Unused_data/*
+
+
